@@ -9,14 +9,29 @@
     "sass": "sass src/sass:public:css",
     "preview": "vite preview",
     "lint": "eslint src/**/*.js",
-    "lint-fix": "eslint src/**/*.js --cache --fix"
+    "lint-fix": "eslint src/**/*.js --cache --fix",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "eslint": "^8.42.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "sass": "^1.63.3",
     "vite": "^4.3.9"
   },
   "dependencies": {
     "bootstrap": "^5.3.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
   }
 }
