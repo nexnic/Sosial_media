@@ -1,4 +1,20 @@
 // header
-#home {
-  max-height: 50%;
+#home__header {
+  display: flex;
+  min-height: 50vw;
+  max-height: 50vw;
+  overflow: hidden;
+  background: black;
+}
+
+.carousel .carousel-item {
+  height: 500px;
+}
+
+.carousel-item img {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  min-height: 500px;
 }
