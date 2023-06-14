@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build ",
-    "sass": "sass src/sass:public:css",
+    "sass": "sass src/sass:public/css",
     "preview": "vite preview",
     "lint": "eslint src/**/*.js",
     "lint-fix": "eslint src/**/*.js --cache --fix",
