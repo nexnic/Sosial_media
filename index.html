@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./src/js/index.js" defer type="module"></script>
+    <link rel="stylesheet" href="./public/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <section id="">
+        <div
+          class="carousel slide carousel-fade"
+          id="carouselHero"
+          data-mdb-ride="carousel"
+        >
+          <div class="carousel-indicator">
+            <button
+              type="button"
+              data-mdb-target="#carouselHero"
+              data-mdb-slide-to="0"
+              class="active"
+              aria-current="true"
+            ></button>
+            <button
+              type="button"
+              data-mdb-target="#carouselHero"
+              data-mdb-slide-to="1"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-mdb-target="#carouselHero"
+              data-mdb-slide-to="2"
+              aria-label="Slide 2"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./public/image/smedia_005.jpg" alt="" class="w-100" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Smedia</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. A
+                  quos reiciendis officia, rerum nam labore quia eaque nostrum
+                  quam fugit, recusandae officiis mollitia corrupti voluptatem
+                  itaque libero, qui voluptate quisquam!
+                </p>
+                <button type="button" id="btn-register" class="btn btn-primary">
+                  Register User
+                </button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./public/image/smedia_004.jpg" class="w-100" alt="" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Smedia</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Fugit modi voluptatum nemo laboriosam, architecto laborum
+                  libero! Suscipit, eius id repudiandae tenetur at laborum
+                  consectetur, laboriosam, odit aliquam praesentium velit iusto.
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-mdb-target="#carouselHero"
+            data-mdb-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-mdb-target="#carouselHero"
+            data-mdb-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+    </header>
+
+    <!--Model-->
+    <div
+      class="modal fade"
+      id="modal_default"
+      tabindex="-1"
+      rola="dialog"
+      aria-labelledby="settings"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body" id="modal_body">
+            <h2>test</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="modal__login"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="login"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content p-3">
+          <div class="modal-body">
+            <div id="modal__login--error"></div>
+            <form action="" id="form__login">
+              <div class="form-group pb-3">
+                <label for="form__login--email">Email address</label>
+                <input
+                  type="email"
+                  id="form__login--email"
+                  class="form-control"
+                  required
+                />
+                <small class="form-text text-muted">
+                  you need a noroff.no or student.norroff.no
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="form__login--password">Password</label>
+                <input
+                  type="password"
+                  id="form__login--password"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="d-flex pt-3 justify-content-between">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="btn__submit--login"
+                >
+                  Login
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal register -->
+    <div
+      class="modal fade"
+      id="modal__register"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="register"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form action="" method="post" id="form__register">
+              <div class="form-group">
+                <label for="form__register--name">Name</label>
+                <input
+                  type="name"
+                  class="form-control"
+                  id="form__register--name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="form__register-email">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="form__register-email"
+                  required
+                />
+                <small class="form-text text-muted">
+                  you need a noroff.no or student.norroff.no
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="form__register--password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="form__register--password"
+                  required
+                />
+              </div>
+              <div class="d-flex pt-3 justify-content-between">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
