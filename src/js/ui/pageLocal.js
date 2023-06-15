@@ -1,5 +1,6 @@
 import { load } from '../storage/load'
 import { save } from '../storage/save'
+import home from './home/index'
 
 export const onSite = () => {
 	const site = load('page')
@@ -8,5 +9,6 @@ export const onSite = () => {
 	}
 	if (site === 'home') {
 		console.log('home')
+		home()
 	}
 }
