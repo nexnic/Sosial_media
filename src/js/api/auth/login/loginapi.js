@@ -1,4 +1,5 @@
 import { templetErroMsg } from '../../../templet/error/errorform'
+import { save } from '../../../storage/save'
 
 export async function LoginUserAPI(user) {
 	console.log(user)
@@ -16,7 +17,11 @@ export async function LoginUserAPI(user) {
 		console.log(response)
 		if (response.ok) {
 			if (response.status === 200) {
-				console.log('status 200')
+				const data = await response.json()
+				save('userData', data)
+				save('token', data.accessToken)
+				save('page', 'feedpage')
+				location.reload()
 			}
 		}
 		if (response.status === 401) {
