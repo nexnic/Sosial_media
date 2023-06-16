@@ -21,4 +21,7 @@ export const onSite = () => {
 		console.log('user site')
 		user()
 	}
+	if (site === 'user-list') {
+		console.log('user-list')
+	}
 }
