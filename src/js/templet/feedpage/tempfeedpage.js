@@ -1,8 +1,10 @@
 import { load } from '../../storage/load'
+import { removePostAPI } from '../../api/post/removepostAPI'
 
 export const tempFeedPage = (key) => {
 	const User = load('userData')
-	console.log(User)
+	const { name: Currentuser, accessToken: token } = User
+
 	// Select Element
 	const main = document.querySelector('main')
 	main.classList.add(
@@ -15,6 +17,7 @@ export const tempFeedPage = (key) => {
 
 	key.forEach((data) => {
 		const {
+			id: postId,
 			title: postTitle,
 			media: postImg,
 			body: postBody,
@@ -23,6 +26,7 @@ export const tempFeedPage = (key) => {
 			created: cratedData,
 		} = data
 		const { name: postName, avatar: PostImage } = author
+		const IsUser = postName === Currentuser
 
 		// Card
 		const card = document.createElement('card')
@@ -86,9 +90,21 @@ export const tempFeedPage = (key) => {
 		const cardDesc = document.createElement('p')
 		cardDesc.innerText = postBody
 
+		// Remove Btn
+		const removebtn = document.createElement('button')
+		removebtn.setAttribute('value', postId)
+		removebtn.classList.add('btn')
+		removebtn.innerText = 'remove'
+
 		card.append(cardbody)
 		cardbody.append(cardTitle)
 		cardbody.append(cardDesc)
+		if (IsUser) {
+			cardbody.append(removebtn)
+			removebtn.addEventListener('click', (e) => {
+				removePostAPI(token, postId)
+			})
+		}
 
 		// card Comment
 		const comcon = document.createElement('div')
