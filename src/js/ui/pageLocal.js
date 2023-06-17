@@ -3,6 +3,7 @@ import { save } from '../storage/save'
 import home from './home/index'
 import feedpage from './feedpage/index'
 import user from './user/index'
+import userlist from './userlist/index'
 
 export const onSite = () => {
 	const site = load('page')
@@ -20,5 +21,9 @@ export const onSite = () => {
 	if (site === 'user') {
 		console.log('user site')
 		user()
+	}
+	if (site === 'user-list') {
+		console.log('user-list')
+		userlist()
 	}
 }
