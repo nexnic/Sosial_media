@@ -1,10 +1,14 @@
 import { valEmail, valPWD, valName } from '../tools/validator'
 import { LoginUserAPI } from '../api/auth/login/loginapi'
 import { RegUserAPI } from '../api/auth/register/apiregister'
+import { addPostAPI } from '../api/post/addpostAPI'
+import { load } from '../storage/load'
 
 export const listenersform = (event) => {
 	const e = event
 	console.log(e)
+	const userdata = load('userData')
+	const { accessToken: token } = userdata
 
 	document
 		.querySelector('form#form__register')
@@ -101,4 +105,23 @@ export const listenersform = (event) => {
 				LoginUserAPI(json)
 			}
 		})
+
+	document.querySelector('#modal__post')?.addEventListener('submit', (e) => {
+		e.preventDefault()
+		const Form = e.target
+		const FormFields = Form.elements
+
+		const title = FormFields[0].value
+		const tage = FormFields[1].value.split(',').map((tag) => tag.trim())
+		const body = FormFields[2].value
+		const media = FormFields[3].value.trim()
+
+		const json = {
+			title: title,
+			body: body,
+			media: media,
+			tags: tage,
+		}
+		addPostAPI(token, json)
+	})
 }
