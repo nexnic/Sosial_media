@@ -10,7 +10,7 @@ document.querySelector('#usersBtn')?.addEventListener('click', (event) => {
 })
 
 document.querySelector('#addbtn')?.addEventListener('click', (event) => {
-	console.log('click')
+	$('#modal__post').modal('toggle')
 })
 
 document.querySelector('#searchbtn')?.addEventListener('click', (event) => {
