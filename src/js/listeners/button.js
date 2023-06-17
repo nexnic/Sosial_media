@@ -2,8 +2,6 @@ export const listenersbtn = (e) => {
 	const event = e
 
 	document.querySelector('#btn-register')?.addEventListener('click', () => {
-		console.log('click Register user')
-
 		$('#modal__login').modal('toggle')
 	})
 
@@ -14,6 +12,9 @@ export const listenersbtn = (e) => {
 		})
 
 	document.querySelector('#usersBtn')?.addEventListener('click', () => {
+		console.log('click')
+	})
+	document.querySelector('#addbtn')?.addEventListener('click', (event) => {
 		console.log('click')
 	})
 }
