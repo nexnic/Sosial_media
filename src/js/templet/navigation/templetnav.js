@@ -1,8 +1,9 @@
 import { load } from '../../storage/load'
 
 export const templetnavbar = (UserData) => {
-	const { name: userName, avatar: userImage } = UserData
-
+	const onSite = load('page')
+	const inputdata = UserData
+	const { name: userName, avatar: userImage } = inputdata
 	// Select element
 	const navbar = document.querySelector('#nav__bottom')
 	navbar.classList.add('navbar', 'fixed-bottom', 'bg-primary', 'text-white')
@@ -21,7 +22,7 @@ export const templetnavbar = (UserData) => {
 	profileImg.style.minHeight = '25px'
 	profileImg.style.maxWidth = '25px'
 	profileImg.style.minWidth = '25px'
-
+	console.log(userImage)
 	if (userImage) {
 		profileImg.src = userImage
 		profileImg.alt = userName
@@ -66,9 +67,31 @@ export const templetnavbar = (UserData) => {
 	const homeIcon = document.createElement('i')
 	homeIcon.classList.add('fa-solid', 'fa-house')
 
+	// logout btn
+	const logoutbtn = document.createElement('button')
+	logoutbtn.classList.add('btn')
+	logoutbtn.setAttribute('type', 'button')
+	logoutbtn.setAttribute('id', 'logoutbtn')
+
+	const logoutIcon = document.createElement('i')
+	logoutIcon.classList.add('fa-solid', 'fa-right-from-bracket')
+
+	if (onSite === 'feedpage') {
+		homebtn.classList.add('btn', 'disabled')
+	}
+	if (onSite === 'user') {
+		addbtn.classList.add('btn', 'disabled')
+	}
+	if (onSite === 'user-list') {
+		usersBtn.classList.add('btn', 'disabled')
+		addbtn.classList.add('btn', 'disabled')
+	}
+
 	navbar.append(content)
 	content.append(profilebtn)
 	profilebtn.append(profileImg)
+	content.append(logoutbtn)
+	logoutbtn.append(logoutIcon)
 	content.append(usersBtn)
 
 	usersBtn.append(usersIcon)
