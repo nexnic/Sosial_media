@@ -1,8 +1,10 @@
 import { load } from '../../storage/load'
+import { searchAfterItem } from '../../tools/search'
 
 export const templetnavbar = (UserData) => {
 	const onSite = load('page')
 	const inputdata = UserData
+
 	const { name: userName, avatar: userImage } = inputdata
 	// Select element
 	const navbar = document.querySelector('#nav__bottom')
@@ -50,9 +52,20 @@ export const templetnavbar = (UserData) => {
 	addIcon.classList.add('fa-solid', 'fa-plus')
 
 	// search button
+	const formsearch = document.createElement('form')
+	formsearch.setAttribute('id', 'form__search')
+	const searchdiv = document.createElement('div')
+	searchdiv.classList.add('input-group', 'mb-3')
+
+	const searchdivsub = document.createElement('div')
+	searchdivsub.classList.add('input-group-append')
+
+	const searchinput = document.createElement('input')
+	searchinput.classList.add('form-control')
+	searchinput.setAttribute('type', 'text')
 	const searchbtn = document.createElement('button')
-	searchbtn.classList.add('btn')
-	searchbtn.setAttribute('type', 'button')
+	searchbtn.classList.add('btn', 'btn-outline-secondary')
+	searchbtn.setAttribute('type', 'submit')
 	searchbtn.setAttribute('id', 'searchbtn')
 
 	const searchIcon = document.createElement('i')
@@ -97,8 +110,29 @@ export const templetnavbar = (UserData) => {
 	usersBtn.append(usersIcon)
 	content.append(addbtn)
 	addbtn.append(addIcon)
-	content.append(searchbtn)
-	searchbtn.append(searchIcon)
+
 	content.append(homebtn)
 	homebtn.append(homeIcon)
+	content.append(formsearch)
+	formsearch.append(searchdiv)
+	searchdiv.append(searchinput)
+	searchdiv.append(searchdivsub)
+	searchdivsub.appendChild(searchbtn)
+	searchbtn.append(searchIcon)
+
+	formsearch.addEventListener('submit', (event) => {
+		event.preventDefault()
+		const data = load('feedpost')
+		const searchData = JSON.stringify(data)
+
+		const Form = event.target
+		const FormFields = Form.elements
+		const search = FormFields[0].value.trim()
+
+		const searchresult = searchAfterItem(data, search)
+
+		if (searchresult) {
+			document.getElementById(`post__${searchresult}`).focus()
+		}
+	})
 }
