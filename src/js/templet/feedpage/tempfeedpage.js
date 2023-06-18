@@ -1,6 +1,7 @@
 import { load } from '../../storage/load'
 import { removePostAPI } from '../../api/post/removepostAPI'
 import { addCommentAPI } from '../../api/comment/putCommentapi'
+import { reactAPI } from '../../api/react/reactapi'
 
 export const tempFeedPage = (key) => {
 	const User = load('userData')
@@ -26,6 +27,7 @@ export const tempFeedPage = (key) => {
 			comments,
 			created: cratedData,
 			tags: postTags,
+			reactions: PostRections,
 		} = data
 		const { name: postName, avatar: PostImage } = author
 		const IsUser = postName === Currentuser
@@ -78,6 +80,46 @@ export const tempFeedPage = (key) => {
 		Profileinfo.append(ProfileName)
 		cardHeader.append(ProfileData)
 		ProfileData.append(MadDate)
+
+		const SubHeader = document.createElement('div')
+		SubHeader.classList.add('card-header', 'd-flex', 'justify-content-between')
+		card.append(SubHeader)
+		const reacAdddiv = document.createElement('div')
+
+		const likebtn = document.createElement('button')
+		likebtn.classList.add('btn')
+		likebtn.innerText = '👍'
+
+		likebtn.addEventListener('click', () => {
+			reactAPI(token, postId, '👍')
+		})
+
+		const heartbtn = document.createElement('button')
+		heartbtn.classList.add('btn')
+		heartbtn.innerText = '❤️'
+
+		SubHeader.append(reacAdddiv)
+		reacAdddiv.append(likebtn)
+		reacAdddiv.append(heartbtn)
+
+		const reacDiv = document.createElement('div')
+		SubHeader.append(reacDiv)
+		PostRections.forEach((list) => {
+			const { count, symbol } = list
+
+			const RectBTN = document.createElement('button')
+			RectBTN.classList.add('btn')
+			RectBTN.setAttribute('value', symbol)
+			RectBTN.innerText = `${count} ${symbol}`
+
+			reacDiv.append(RectBTN)
+
+			RectBTN.addEventListener('click', (e) => {
+				RectBTN.innerText = `${count + 1} ${symbol}`
+
+				reactAPI(token, postId, symbol)
+			})
+		})
 
 		// card Body
 
