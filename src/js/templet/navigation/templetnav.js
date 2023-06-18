@@ -11,7 +11,24 @@ export const templetnavbar = (UserData) => {
 	content.classList.add('d-flex', 'justify-content-between')
 
 	//Profilebtn
-	const profile = document.createElement('button')
+	const profilebtn = document.createElement('button')
+	profilebtn.setAttribute('type', 'button')
+	profilebtn.setAttribute('id', 'profilebtn')
+	profilebtn.classList.add('btn')
+	const profileImg = document.createElement('img')
+	profileImg.classList.add('rounded-circle')
+	profileImg.style.maxHeight = '25px'
+	profileImg.style.minHeight = '25px'
+	profileImg.style.maxWidth = '25px'
+	profileImg.style.minWidth = '25px'
+
+	if (userImage) {
+		profileImg.src = userImage
+		profileImg.alt = userName
+	} else {
+		profileImg.src = './public/image/default-Profile.png'
+		profileImg.alt = 'Image of default avatar'
+	}
 
 	// Users
 	const usersBtn = document.createElement('button')
@@ -50,7 +67,10 @@ export const templetnavbar = (UserData) => {
 	homeIcon.classList.add('fa-solid', 'fa-house')
 
 	navbar.append(content)
+	content.append(profilebtn)
+	profilebtn.append(profileImg)
 	content.append(usersBtn)
+
 	usersBtn.append(usersIcon)
 	content.append(addbtn)
 	addbtn.append(addIcon)

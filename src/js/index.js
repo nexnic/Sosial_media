@@ -9,6 +9,10 @@ document.querySelector('#usersBtn')?.addEventListener('click', (event) => {
 	save('page', 'user-list')
 })
 
+document.querySelector('#profilebtn')?.addEventListener('click', (event) => {
+	save('page', 'user')
+})
+
 document.querySelector('#addbtn')?.addEventListener('click', (event) => {
 	$('#modal__post').modal('toggle')
 })
@@ -19,23 +23,4 @@ document.querySelector('#searchbtn')?.addEventListener('click', (event) => {
 
 document.querySelector('#homebtn')?.addEventListener('click', () => {
 	console.log('click')
-})
-
-const followingbtn = document.querySelector('#followbtn')
-
-followingbtn?.addEventListener('click', () => {
-	console.log('click')
-})
-
-document.querySelectorAll('.followingBtn')?.forEach((e) =>
-	e.addEventListener('click', (e) => {
-		console.log('div')
-	})
-)
-
-let followingbtntest = document.querySelectorAll('#followbtn')
-followingbtntest.forEach((item) => {
-	item?.addEventListener('click', () => {
-		console.log('click')
-	})
 })

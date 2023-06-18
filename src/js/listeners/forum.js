@@ -7,9 +7,6 @@ import { load } from '../storage/load'
 
 export const listenersform = (event) => {
 	const e = event
-	console.log(e)
-	const userdata = load('userData')
-	const { accessToken: token } = userdata
 
 	document
 		.querySelector('form#form__register')
@@ -108,6 +105,8 @@ export const listenersform = (event) => {
 		})
 
 	document.querySelector('#modal__post')?.addEventListener('submit', (e) => {
+		const userdata = load('userData')
+		const { accessToken: token } = userdata
 		e.preventDefault()
 		const Form = e.target
 		const FormFields = Form.elements
@@ -129,6 +128,8 @@ export const listenersform = (event) => {
 	document
 		.querySelector('form#form__postedit')
 		?.addEventListener('submit', (e) => {
+			const userdata = load('userData')
+			const { accessToken: token } = userdata
 			e.preventDefault()
 			const Form = e.target
 			const FormFields = Form.elements
