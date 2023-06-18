@@ -2,6 +2,7 @@ import { valEmail, valPWD, valName } from '../tools/validator'
 import { LoginUserAPI } from '../api/auth/login/loginapi'
 import { RegUserAPI } from '../api/auth/register/apiregister'
 import { addPostAPI } from '../api/post/addpostAPI'
+import { editPostAPI } from '../api/post/updatePostAPI'
 import { load } from '../storage/load'
 
 export const listenersform = (event) => {
@@ -124,4 +125,28 @@ export const listenersform = (event) => {
 		}
 		addPostAPI(token, json)
 	})
+
+	document
+		.querySelector('form#form__postedit')
+		?.addEventListener('submit', (e) => {
+			e.preventDefault()
+			const Form = e.target
+			const FormFields = Form.elements
+
+			const id = document.querySelector('form#form__postedit').value
+			const title = FormFields[0].value.trim()
+			const body = FormFields[1].value.trim()
+			const tage = FormFields[2].value.split(',').map((tag) => tag.trim())
+			const media = FormFields[3].value.trim()
+			console.log(id)
+
+			const json = {
+				title: title,
+				body: body,
+				media: media,
+				tags: tage,
+			}
+
+			editPostAPI(token, json, id)
+		})
 }
