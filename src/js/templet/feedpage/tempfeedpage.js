@@ -24,6 +24,7 @@ export const tempFeedPage = (key) => {
 			author,
 			comments,
 			created: cratedData,
+			tags: postTags,
 		} = data
 		const { name: postName, avatar: PostImage } = author
 		const IsUser = postName === Currentuser
@@ -96,13 +97,28 @@ export const tempFeedPage = (key) => {
 		removebtn.classList.add('btn')
 		removebtn.innerText = 'remove'
 
+		// Edit btn
+		const editbtn = document.createElement('button')
+		editbtn.setAttribute('value', postId)
+		editbtn.classList.add('btn')
+		editbtn.innerText = 'edit'
+
 		card.append(cardbody)
 		cardbody.append(cardTitle)
 		cardbody.append(cardDesc)
 		if (IsUser) {
 			cardbody.append(removebtn)
+			cardbody.append(editbtn)
 			removebtn.addEventListener('click', (e) => {
 				removePostAPI(token, postId)
+			})
+			editbtn.addEventListener('click', (e) => {
+				$('#modal__postedit').modal('toggle')
+				document.querySelector('#form__postedit--title').value = postTitle
+				document.querySelector('#form__postedit--body').value = postBody
+				document.querySelector('#form__postedit--tags').value = postTags
+				document.querySelector('#form__postedit--media').value = postImg
+				document.querySelector('form#form__postedit').value = postId
 			})
 		}
 
