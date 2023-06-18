@@ -25,10 +25,6 @@ document.querySelector('#addbtn')?.addEventListener('click', (event) => {
 	$('#modal__post').modal('toggle')
 })
 
-document.querySelector('#searchbtn')?.addEventListener('click', (event) => {
-	console.log('click')
-})
-
 document.querySelector('#homebtn')?.addEventListener('click', () => {
 	save('page', 'feedpage')
 	location.reload()
