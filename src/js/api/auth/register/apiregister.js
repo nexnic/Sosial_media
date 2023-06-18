@@ -16,9 +16,10 @@ export async function RegUserAPI(user) {
 
 		if (response.ok) {
 			const data = await response.json()
-
+			if (response.status === 200) {
+				location.reload()
+			}
 			if (response.status >= 400) {
-				const data = await response.json()
 				const headline = 'msgError '
 				const msg = data.errors[0].message
 				const element = '#modal__register--error'
