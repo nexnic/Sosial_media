@@ -1,3 +1,5 @@
+import { templetprofile } from '../../templet/profile/tempprofile'
+
 export async function getProfileDetail(userName, token) {
 	try {
 		const response = await fetch(
@@ -12,7 +14,8 @@ export async function getProfileDetail(userName, token) {
 		)
 		if (response.ok) {
 			if (response.status === 200) {
-				console.log(await response.json())
+				const data = await response.json()
+				templetprofile(data)
 			}
 		}
 	} catch (error) {
