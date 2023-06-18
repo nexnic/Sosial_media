@@ -35,7 +35,7 @@ export async function LoginUserAPI(user) {
 			templetErroMsg(headline, msg, element, submit)
 		}
 	} catch (error) {
-		console.log(error)
+		alert(error)
 	}
 }
 // templetErroMsg
