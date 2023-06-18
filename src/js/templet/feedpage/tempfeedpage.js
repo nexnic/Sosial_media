@@ -35,6 +35,7 @@ export const tempFeedPage = (key) => {
 		// Card
 		const card = document.createElement('card')
 		card.classList.add('card', 'w-50')
+		card.setAttribute('id', `post__${postId}`)
 
 		main.append(card)
 
