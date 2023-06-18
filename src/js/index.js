@@ -1,6 +1,7 @@
 import listeners from './listeners/index'
 import ui from './ui/index'
 import { save } from './storage/save'
+import { cleanall } from './storage/clean'
 
 listeners()
 ui()
@@ -12,6 +13,11 @@ document.querySelector('#usersBtn')?.addEventListener('click', (event) => {
 
 document.querySelector('#profilebtn')?.addEventListener('click', (event) => {
 	save('page', 'user')
+	location.reload()
+})
+
+document.querySelector('#logoutbtn')?.addEventListener('click', () => {
+	cleanall()
 	location.reload()
 })
 
