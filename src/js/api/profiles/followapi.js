@@ -14,7 +14,6 @@ export async function followingAPI(userName, token) {
 				console.log(await response.json())
 			}
 		}
-		console.log(await response.json())
 	} catch (error) {
 		console.log(error)
 	}
