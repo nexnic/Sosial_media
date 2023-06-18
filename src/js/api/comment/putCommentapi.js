@@ -11,8 +11,7 @@ export async function addCommentAPI(token, data, id) {
 				body: JSON.stringify(data),
 			}
 		)
-		console.log(await response.json())
 	} catch (error) {
-		console.log(error)
+		alert(error)
 	}
 }
