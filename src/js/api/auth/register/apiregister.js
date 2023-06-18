@@ -1,3 +1,5 @@
+import { templetErroMsg } from '../../../templet/error/errorform'
+
 export async function RegUserAPI(user) {
 	console.log(user)
 	try {
@@ -11,13 +13,21 @@ export async function RegUserAPI(user) {
 				body: JSON.stringify(user),
 			}
 		)
-		console.log(response.statusText)
+
 		if (response.ok) {
 			const data = await response.json()
-			console.log(data)
+
+			if (response.status >= 400) {
+				const data = await response.json()
+				const headline = 'msgError '
+				const msg = data.errors[0].message
+				const element = '#modal__register--error'
+				const submit = '#btn__submit--register'
+				templetErroMsg(headline, msg, element, submit)
+			}
 		}
 	} catch (error) {
-		console.log(error)
+		alert(error)
 	}
 }
 /*

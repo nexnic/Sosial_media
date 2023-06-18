@@ -24,7 +24,7 @@ export async function LoginUserAPI(user) {
 				location.reload()
 			}
 		}
-		if (response.status === 401) {
+		if (response.status >= 400) {
 			const data = await response.json()
 			console.log(data)
 			const headline = 'msgError '
