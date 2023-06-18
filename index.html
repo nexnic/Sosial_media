@@ -3,9 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Smedia | home</title>
     <script src="./src/js/index.js" defer type="module"></script>
     <link rel="stylesheet" href="./public/css/main.css" />
+    <meta name="description" content="Social media platform" />
+    <meta name="keywords" content="SOCIAL, Media, Friends" />
     <script
       src="https://kit.fontawesome.com/6b4917e13e.js"
       crossorigin="anonymous"
@@ -157,6 +159,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
+            <div id="modal__register--error"></div>
             <form action="" method="post" id="form__register">
               <div class="form-group">
                 <label for="form__register--name">Name</label>
@@ -189,7 +192,13 @@
                 />
               </div>
               <div class="d-flex pt-3 justify-content-between">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="btn__submit--register"
+                >
+                  Register
+                </button>
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -214,6 +223,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
+            <div id="modal__post--error"></div>
             <form action="" method="post" id="form__post">
               <h2>Create Entry</h2>
               <div class="form-group">
@@ -243,7 +253,13 @@
                 />
               </div>
               <div class="d-flex pt-3 justify-content-between">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="btn__submit--post"
+                >
+                  Addd
+                </button>
                 <button
                   type="button"
                   class="btn btn-primary"

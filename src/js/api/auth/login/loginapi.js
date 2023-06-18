@@ -24,9 +24,8 @@ export async function LoginUserAPI(user) {
 				location.reload()
 			}
 		}
-		if (response.status === 401) {
+		if (response.status >= 400) {
 			const data = await response.json()
-			console.log(data)
 			const headline = 'msgError '
 			const msg = data.errors[0].message
 			const element = '#modal__login--error'
@@ -35,7 +34,7 @@ export async function LoginUserAPI(user) {
 			templetErroMsg(headline, msg, element, submit)
 		}
 	} catch (error) {
-		console.log(error)
+		alert(error)
 	}
 }
 // templetErroMsg
