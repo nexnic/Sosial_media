@@ -35,6 +35,7 @@ module.exports = {
 			'never'
 		],
 		"no-unused-vars": 0,
-		'no-undef': 'off'
+		'no-undef': 'off',
+		'hasOwnProperty': 'off'
 	}
 }
