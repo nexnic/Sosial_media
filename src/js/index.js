@@ -7,10 +7,12 @@ ui()
 
 document.querySelector('#usersBtn')?.addEventListener('click', (event) => {
 	save('page', 'user-list')
+	location.reload()
 })
 
 document.querySelector('#profilebtn')?.addEventListener('click', (event) => {
 	save('page', 'user')
+	location.reload()
 })
 
 document.querySelector('#addbtn')?.addEventListener('click', (event) => {
@@ -22,5 +24,6 @@ document.querySelector('#searchbtn')?.addEventListener('click', (event) => {
 })
 
 document.querySelector('#homebtn')?.addEventListener('click', () => {
-	console.log('click')
+	save('page', 'feedpage')
+	location.reload()
 })
