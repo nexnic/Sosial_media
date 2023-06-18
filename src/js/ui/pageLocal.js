@@ -11,19 +11,15 @@ export const onSite = () => {
 		save('page', 'home')
 	}
 	if (site === 'home') {
-		console.log('home')
 		home()
 	}
 	if (site === 'feedpage') {
-		console.log('feedpage')
 		feedpage()
 	}
 	if (site === 'user') {
-		console.log('user site')
 		user()
 	}
 	if (site === 'user-list') {
-		console.log('user-list')
 		userlist()
 	}
 }
