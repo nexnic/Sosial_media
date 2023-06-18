@@ -1,5 +1,6 @@
 import { load } from '../../storage/load'
 import { removePostAPI } from '../../api/post/removepostAPI'
+import { addCommentAPI } from '../../api/comment/putCommentapi'
 
 export const tempFeedPage = (key) => {
 	const User = load('userData')
@@ -121,6 +122,48 @@ export const tempFeedPage = (key) => {
 				document.querySelector('form#form__postedit').value = postId
 			})
 		}
+
+		// add Comment
+		const addCom = document.createElement('div')
+		addCom.classList.add('input-group', 'mb-3')
+
+		const formCom = document.createElement('form')
+		formCom.setAttribute('id', 'form__comment')
+		formCom.setAttribute('value', postId)
+
+		const inputCom = document.createElement('input')
+		inputCom.classList.add('form-control')
+
+		inputCom.setAttribute('id', 'form__comment--input')
+
+		// addComUnder
+		const addComUnder = document.createElement('div')
+		addComUnder.classList.add('input-group-append')
+
+		const addCombtn = document.createElement('button')
+		addCombtn.classList.add('btn', 'btn-outline-secondary')
+		addCombtn.setAttribute('type', 'submit')
+		addCombtn.innerText = 'Comment'
+
+		cardbody.append(addCom)
+		addCom.append(formCom)
+		formCom.append(inputCom)
+		formCom.append(addComUnder)
+		addComUnder.append(addCombtn)
+
+		formCom.addEventListener('submit', (e) => {
+			e.preventDefault()
+			const Form = e.target
+			const FormFields = Form.elements
+
+			const comment = FormFields[0].value.trim()
+
+			const json = {
+				body: comment,
+			}
+
+			addCommentAPI(token, json, postId)
+		})
 
 		// card Comment
 		const comcon = document.createElement('div')
