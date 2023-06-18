@@ -13,11 +13,4 @@ export const listenersbtn = (e) => {
 		?.addEventListener('submit', () => {
 			console.log('test click')
 		})
-
-	document.querySelector('#usersBtn')?.addEventListener('click', () => {
-		console.log('click')
-	})
-	document.querySelector('#addbtn')?.addEventListener('click', (event) => {
-		console.log('click')
-	})
 }
